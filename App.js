@@ -1,25 +1,44 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 
-export default class App extends React.Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <Text>Shake your phone to open the developer menu.</Text>
-                <Text>Hi there this is Laura's app</Text>
+import {StackNavigator} from 'react-navigation';
 
-            </View>
-        );
-    }
-}
+import MovieList from './app/MovieList';
+import MovieDetails from './app/MovieDetails';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+const ScreenNavigator = StackNavigator({
+    Home: {screen: MovieList},
+    Details: {
+        path: 'movieDetails/:movie',
+        screen: MovieDetails}
 });
+
+global.movies = [{
+    'id': 0,
+    'name': 'IT',
+    'year': '2017',
+    'image': require('./img/it.jpg'),
+}, {
+    'id': 1,
+    'name': 'Moana1',
+    'year': '2019',
+    'image': require('./img/moana.jpg'),
+}, {
+    'id': 2,
+    'name': 'Moana2',
+    'year': '2019',
+    'image': require('./img/moana.jpg'),
+}, {
+    'id': 3,
+    'name': 'Moana3',
+    'year': '2019',
+    'image': require('./img/moana.jpg'),
+}, {
+    'id': 4,
+    'name': 'Moana',
+    'year': '2019',
+    'image': require('./img/moana.jpg'),
+}];
+
+export default ScreenNavigator;
+
